@@ -1,0 +1,7 @@
+node_modules/
+data/node_modules/
+data/package-lock.json
+data/package.json
+data/parse-questions.js
+data/*.json
+.DS_Store

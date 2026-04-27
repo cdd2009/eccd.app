@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eccd.app — AP Economics Practice</title>
+  <meta name="description" content="Master AP Micro & Macro Economics with 2,800+ practice questions, timed tests, and unit-by-unit study.">
+  <link rel="stylesheet" href="index.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand" id="logo"><b>eccd</b><span>.app</span></div>
+      <div class="tabs">
+        <button class="tab on" data-t="practice">Practice</button>
+        <button class="tab" data-t="test">Test</button>
+        <button class="tab" data-t="notes">Notes</button>
+      </div>
+      <div class="nav-right">
+        <span id="nav-acc"></span>
+        <span class="fire" id="nav-fire"></span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="wrap">
+
+    <!-- HOME -->
+    <div class="scr on" id="s-home">
+      <div class="pills">
+        <div class="pill on mi" data-s="micro">📗 Micro</div>
+        <div class="pill ma" data-s="macro">📘 Macro</div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="stat-v grad" id="sv-att">0</div><div class="stat-l">Attempted</div></div>
+        <div class="stat"><div class="stat-v grad" id="sv-acc">—</div><div class="stat-l">Accuracy</div></div>
+        <div class="stat"><div class="stat-v grad" id="sv-str">0 🔥</div><div class="stat-l">Streak</div></div>
+      </div>
+      <div class="divider">MCQ Practice by Unit</div>
+      <div class="grid" id="mcq-grid"></div>
+      <div class="divider">FRQ Practice by Unit</div>
+      <div class="grid" id="frq-grid"></div>
+    </div>
+
+    <!-- TEST -->
+    <div class="scr" id="s-test">
+      <div class="pills">
+        <div class="pill on mi ts" data-s="micro">📗 Micro</div>
+        <div class="pill ma ts" data-s="macro">📘 Macro</div>
+      </div>
+      <div class="divider">Choose a Test</div>
+      <div class="tcards">
+        <div class="tcard" data-tt="full"><div class="tcard-icon">🎯</div><div class="tcard-title">Full Practice Test</div><div class="tcard-desc">60 MCQs • 70 minutes</div></div>
+        <div class="tcard" data-tt="quick"><div class="tcard-icon">⚡</div><div class="tcard-title">Quick Quiz</div><div class="tcard-desc">20 MCQs • 25 minutes</div></div>
+        <div class="tcard" data-tt="unit"><div class="tcard-icon">📋</div><div class="tcard-title">Unit Test</div><div class="tcard-desc">All MCQs from one unit</div></div>
+        <div class="tcard" data-tt="missed"><div class="tcard-icon">🔄</div><div class="tcard-title">Review Missed</div><div class="tcard-desc">Retry wrong answers</div></div>
+      </div>
+      <div id="ut-pick" style="display:none">
+        <div class="divider">Pick a Unit</div>
+        <div class="grid" id="ut-grid"></div>
+      </div>
+    </div>
+
+    <!-- QUESTION -->
+    <div class="scr" id="s-q">
+      <div class="qview">
+        <button class="back-btn" id="go-back">← Back</button>
+        <div class="qheader">
+          <div class="qcrumb" id="qcrumb"></div>
+          <div class="qcnt" id="qcnt"></div>
+        </div>
+        <div class="timer" id="timer" style="display:none">
+          <div class="tdisp" id="tdisp">70:00</div>
+          <div class="tprog"><div class="ttrack"><div class="tfill" id="tfill" style="width:100%"></div></div></div>
+          <div class="tqc" id="tqc"></div>
+        </div>
+        <div class="qcard">
+          <div class="qtxt" id="qtxt"></div>
+          <div class="choices" id="qch"></div>
+          <div id="frq-zone" style="display:none">
+            <button class="frq-reveal" id="frq-btn">👁 Tap to reveal answer</button>
+            <div class="frq-ans" id="frq-ans" style="display:none"></div>
+          </div>
+          <div id="qfb" style="display:none"></div>
+          <div id="qexpl" style="display:none"></div>
+        </div>
+        <div class="qnav">
+          <button class="btn btn-s" id="prev-btn" style="visibility:hidden">← Prev</button>
+          <button class="btn btn-p" id="next-btn">Next →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="scr" id="s-res">
+      <div class="res-card">
+        <div style="font-size:3.5rem;margin-bottom:8px">📊</div>
+        <div class="res-score" id="rs-score">0%</div>
+        <div class="res-label" id="rs-label">Complete</div>
+        <div class="res-grid">
+          <div class="res-item"><div class="res-val" id="rs-ok" style="color:var(--correct)">0</div><div class="res-lbl">Correct</div></div>
+          <div class="res-item"><div class="res-val" id="rs-no" style="color:var(--wrong)">0</div><div class="res-lbl">Incorrect</div></div>
+          <div class="res-item"><div class="res-val" id="rs-tot">0</div><div class="res-lbl">Total</div></div>
+        </div>
+        <div class="res-btns">
+          <button class="btn btn-s" id="rs-rev">Review Answers</button>
+          <button class="btn btn-p" id="rs-home">Home</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOTES -->
+    <div class="scr" id="s-notes">
+      <div class="empty">
+        <div class="empty-icon">📝</div>
+        <div class="empty-title">Notes Coming Soon</div>
+        <div class="empty-desc">Unit-by-unit study notes for AP Micro &amp; Macro will appear here.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="data/micro-mcq.json.js"></script>
+  <script src="data/macro-mcq.json.js"></script>
+  <script src="data/micro-frq.json.js"></script>
+  <script src="data/macro-frq.json.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
