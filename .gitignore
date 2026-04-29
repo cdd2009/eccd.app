@@ -3,5 +3,9 @@ data/node_modules/
 data/package-lock.json
 data/package.json
 data/parse-questions.js
+data/parse-papers.py
 data/*.json
 .DS_Store
+.agent/
+micro/
+macro/

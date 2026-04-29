@@ -1,42 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="color-scheme: dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>eccd.app — AP Economics Practice</title>
-  <meta name="description" content="Master AP Micro & Macro Economics with 2,800+ practice questions, timed tests, and unit-by-unit study.">
-  <link rel="stylesheet" href="index.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+  <meta name="description" content="Master AP Micro &amp; Macro Economics with 2,800+ practice questions, timed tests, and unit-by-unit study.">
+  <meta name="theme-color" content="#06080f">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css?v=2">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2334d399' stroke-width='2'><line x1='18' y1='20' x2='18' y2='10'/><line x1='12' y1='20' x2='12' y2='4'/><line x1='6' y1='20' x2='6' y2='14'/></svg>">
 </head>
 <body>
 
-  <nav class="nav">
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- DARK THEME NAV (Home/Test/Notes) -->
+  <nav class="nav" id="main-nav" aria-label="Main navigation">
     <div class="nav-inner">
-      <div class="brand" id="logo"><b>eccd</b><span>.app</span></div>
-      <div class="tabs">
-        <button class="tab on" data-t="practice">Practice</button>
-        <button class="tab" data-t="test">Test</button>
-        <button class="tab" data-t="notes">Notes</button>
+      <div class="brand" id="logo" role="button" tabindex="0" aria-label="Go to homepage"><b>eccd</b></div>
+      <div class="tabs" role="tablist">
+        <button class="tab on" data-t="practice" role="tab">Practice</button>
+        <button class="tab" data-t="test" role="tab">Test</button>
+        <button class="tab" data-t="papers" role="tab">Papers</button>
+        <button class="tab" data-t="notes" role="tab">Notes</button>
       </div>
-      <div class="nav-right">
-        <span id="nav-acc"></span>
-        <span class="fire" id="nav-fire"></span>
-      </div>
+      <div class="nav-right"><span id="nav-acc"></span><span class="fire" id="nav-fire"></span></div>
     </div>
   </nav>
 
-  <div class="wrap">
+  <div class="wrap" id="main" role="main">
 
     <!-- HOME -->
     <div class="scr on" id="s-home">
-      <div class="pills">
-        <div class="pill on mi" data-s="micro">📗 Micro</div>
-        <div class="pill ma" data-s="macro">📘 Macro</div>
+      <div class="pills" role="group">
+        <button class="pill on mi" data-s="micro"><svg class="pill-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>Micro</button>
+        <button class="pill ma" data-s="macro"><svg class="pill-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>Macro</button>
       </div>
       <div class="stats">
         <div class="stat"><div class="stat-v grad" id="sv-att">0</div><div class="stat-l">Attempted</div></div>
-        <div class="stat"><div class="stat-v grad" id="sv-acc">—</div><div class="stat-l">Accuracy</div></div>
-        <div class="stat"><div class="stat-v grad" id="sv-str">0 🔥</div><div class="stat-l">Streak</div></div>
+        <div class="stat"><div class="stat-v grad" id="sv-acc">--</div><div class="stat-l">Accuracy</div></div>
+        <div class="stat"><div class="stat-v grad" id="sv-str"><span class="streak-num">0</span><svg class="streak-fire" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></div><div class="stat-l">Streak</div></div>
       </div>
       <div class="divider">MCQ Practice by Unit</div>
       <div class="grid" id="mcq-grid"></div>
@@ -44,51 +49,103 @@
       <div class="grid" id="frq-grid"></div>
     </div>
 
+    <!-- PAST PAPERS -->
+    <div class="scr" id="s-papers">
+      <div class="pills" role="group">
+        <button class="pill on mi pp" data-s="micro"><svg class="pill-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>Micro</button>
+        <button class="pill ma pp" data-s="macro"><svg class="pill-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>Macro</button>
+      </div>
+      <div class="divider">Released AP Exam Papers</div>
+      <div class="papers-grid" id="papers-grid"></div>
+    </div>
+
     <!-- TEST -->
     <div class="scr" id="s-test">
-      <div class="pills">
-        <div class="pill on mi ts" data-s="micro">📗 Micro</div>
-        <div class="pill ma ts" data-s="macro">📘 Macro</div>
+      <div class="pills" role="group">
+        <button class="pill on mi ts" data-s="micro"><svg class="pill-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>Micro</button>
+        <button class="pill ma ts" data-s="macro"><svg class="pill-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>Macro</button>
       </div>
       <div class="divider">Choose a Test</div>
       <div class="tcards">
-        <div class="tcard" data-tt="full"><div class="tcard-icon">🎯</div><div class="tcard-title">Full Practice Test</div><div class="tcard-desc">60 MCQs • 70 minutes</div></div>
-        <div class="tcard" data-tt="quick"><div class="tcard-icon">⚡</div><div class="tcard-title">Quick Quiz</div><div class="tcard-desc">20 MCQs • 25 minutes</div></div>
-        <div class="tcard" data-tt="unit"><div class="tcard-icon">📋</div><div class="tcard-title">Unit Test</div><div class="tcard-desc">All MCQs from one unit</div></div>
-        <div class="tcard" data-tt="missed"><div class="tcard-icon">🔄</div><div class="tcard-title">Review Missed</div><div class="tcard-desc">Retry wrong answers</div></div>
+        <div class="tcard" data-tt="full" tabindex="0" role="button"><div class="tcard-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><div class="tcard-title">Full Practice Test</div><div class="tcard-desc">60 MCQs &bull; 70 minutes</div></div>
+        <div class="tcard" data-tt="quick" tabindex="0" role="button"><div class="tcard-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div class="tcard-title">Quick Quiz</div><div class="tcard-desc">20 MCQs &bull; 25 minutes</div></div>
+        <div class="tcard" data-tt="unit" tabindex="0" role="button"><div class="tcard-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"/><path d="M15 3v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg></div><div class="tcard-title">Unit Test</div><div class="tcard-desc">All MCQs from one unit</div></div>
+        <div class="tcard" data-tt="missed" tabindex="0" role="button"><div class="tcard-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg></div><div class="tcard-title">Review Missed</div><div class="tcard-desc">Retry wrong answers</div></div>
       </div>
-      <div id="ut-pick" style="display:none">
-        <div class="divider">Pick a Unit</div>
-        <div class="grid" id="ut-grid"></div>
+      <div id="ut-pick" style="display:none"><div class="divider">Pick a Unit</div><div class="grid" id="ut-grid"></div></div>
+    </div>
+
+    <!-- EXAM VIEW (Bluebook Layout) -->
+    <div class="scr" id="s-q">
+      <!-- 1. Top Header Bar (dark navy) -->
+      <div class="cb-header" id="cb-header">
+        <div class="cb-header-l"><span class="cb-badge">AP</span><span class="cb-exam-name" id="cb-exam-name">Microeconomics</span></div>
+        <div class="cb-header-r"><button class="cb-finish-btn" id="cb-finish-btn">Finish</button></div>
+      </div>
+
+      <!-- 2. Toolbar (white bar under header) -->
+      <div class="cb-toolbar" id="cb-toolbar">
+        <div class="cb-tools-l">
+          <button class="cb-tool" id="cb-flag-btn" title="Mark for Review"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg> Mark for Review</button>
+        </div>
+        <div class="cb-tools-r">
+          <button class="cb-tool" id="cb-crossout-toggle" title="Cross-out"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l16 16M20 4L4 20"/></svg> Cross-out</button>
+          <div class="cb-timer" id="cb-timer" style="display:none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span id="cb-time-val">70:00</span><button class="cb-timer-hide" id="cb-timer-hide" title="Hide timer">Hide</button></div>
+        </div>
+      </div>
+
+      <!-- 3. Question Area (scrollable center) -->
+      <div class="cb-main">
+        <div class="cb-question-area">
+          <div class="cb-q-number" id="cb-q-number">Question 1</div>
+          <div class="cb-q-stem" id="cb-q-stem"></div>
+          <div class="cb-choices" id="cb-choices"></div>
+          <!-- FRQ Zone -->
+          <div id="cb-frq-zone" style="display:none">
+            <label class="cb-frq-label" for="cb-frq-ta">Your Response:</label>
+            <textarea class="cb-frq-ta" id="cb-frq-ta" placeholder="Type your answer here..." rows="8"></textarea>
+            <button class="cb-reveal-btn" id="cb-reveal-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg> Show Scoring Guidelines</button>
+            <div class="cb-rubric" id="cb-rubric" style="display:none"></div>
+          </div>
+          <!-- Check Answer -->
+          <button class="cb-check-btn" id="cb-check-btn" style="display:none">Check Answer</button>
+          <!-- Feedback -->
+          <div id="cb-feedback" style="display:none"></div>
+          <div id="cb-explanation" style="display:none"></div>
+        </div>
+      </div>
+
+      <!-- 4. Bottom Navigation Bar (Bluebook style) -->
+      <div class="cb-bottom">
+        <button class="cb-nav-btn" id="cb-back-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg> Back</button>
+        <button class="cb-q-indicator" id="cb-q-indicator">Question 1 of 60 ▲</button>
+        <button class="cb-nav-btn cb-nav-primary" id="cb-next-btn">Next <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></button>
+      </div>
+
+      <!-- 5. Question Navigator Popup (from bottom) -->
+      <div class="cb-nav-popup" id="cb-nav-popup" style="display:none">
+        <div class="cb-popup-header">
+          <span class="cb-popup-title">Section I Questions</span>
+          <button class="cb-popup-close" id="cb-popup-close">✕</button>
+        </div>
+        <div class="cb-popup-legend">
+          <span><span class="cb-dot cb-dot-current"></span> Current</span>
+          <span><span class="cb-dot cb-dot-unanswered"></span> Unanswered</span>
+          <span><span class="cb-dot cb-dot-review"></span> For Review</span>
+        </div>
+        <div class="cb-popup-grid" id="cb-popup-grid"></div>
+        <button class="cb-popup-review" id="cb-popup-review">Go to Review Page</button>
       </div>
     </div>
 
-    <!-- QUESTION -->
-    <div class="scr" id="s-q">
-      <div class="qview">
-        <button class="back-btn" id="go-back">← Back</button>
-        <div class="qheader">
-          <div class="qcrumb" id="qcrumb"></div>
-          <div class="qcnt" id="qcnt"></div>
-        </div>
-        <div class="timer" id="timer" style="display:none">
-          <div class="tdisp" id="tdisp">70:00</div>
-          <div class="tprog"><div class="ttrack"><div class="tfill" id="tfill" style="width:100%"></div></div></div>
-          <div class="tqc" id="tqc"></div>
-        </div>
-        <div class="qcard">
-          <div class="qtxt" id="qtxt"></div>
-          <div class="choices" id="qch"></div>
-          <div id="frq-zone" style="display:none">
-            <button class="frq-reveal" id="frq-btn">👁 Tap to reveal answer</button>
-            <div class="frq-ans" id="frq-ans" style="display:none"></div>
-          </div>
-          <div id="qfb" style="display:none"></div>
-          <div id="qexpl" style="display:none"></div>
-        </div>
-        <div class="qnav">
-          <button class="btn btn-s" id="prev-btn" style="visibility:hidden">← Prev</button>
-          <button class="btn btn-p" id="next-btn">Next →</button>
+    <!-- SUBMIT MODAL -->
+    <div class="cb-modal-overlay" id="cb-submit-modal" style="display:none">
+      <div class="cb-modal">
+        <div class="cb-modal-head"><h2>Submit Test?</h2><button class="cb-modal-x" id="cb-modal-x">✕</button></div>
+        <div class="cb-modal-body" id="cb-modal-body"></div>
+        <div class="cb-modal-foot">
+          <button class="cb-nav-btn" id="cb-modal-review">Review Unanswered</button>
+          <button class="cb-nav-btn cb-nav-danger" id="cb-modal-submit">Submit Test</button>
         </div>
       </div>
     </div>
@@ -96,36 +153,36 @@
     <!-- RESULTS -->
     <div class="scr" id="s-res">
       <div class="res-card">
-        <div style="font-size:3.5rem;margin-bottom:8px">📊</div>
+        <div class="res-icon"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="url(#rg)" stroke-width="1.5"><defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#34d399"/><stop offset="100%" stop-color="#818cf8"/></linearGradient></defs><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+        <div class="res-ap-score" id="rs-ap" style="display:none"><div class="res-ap-label">Estimated AP Score</div><div class="res-ap-value" id="rs-ap-val">3</div></div>
         <div class="res-score" id="rs-score">0%</div>
         <div class="res-label" id="rs-label">Complete</div>
         <div class="res-grid">
-          <div class="res-item"><div class="res-val" id="rs-ok" style="color:var(--correct)">0</div><div class="res-lbl">Correct</div></div>
-          <div class="res-item"><div class="res-val" id="rs-no" style="color:var(--wrong)">0</div><div class="res-lbl">Incorrect</div></div>
+          <div class="res-item ok-item"><div class="res-val" id="rs-ok">0</div><div class="res-lbl">Correct</div></div>
+          <div class="res-item no-item"><div class="res-val" id="rs-no">0</div><div class="res-lbl">Incorrect</div></div>
           <div class="res-item"><div class="res-val" id="rs-tot">0</div><div class="res-lbl">Total</div></div>
         </div>
-        <div class="res-btns">
-          <button class="btn btn-s" id="rs-rev">Review Answers</button>
-          <button class="btn btn-p" id="rs-home">Home</button>
-        </div>
+        <div class="res-unit-breakdown" id="rs-units" style="display:none"></div>
+        <div class="res-btns"><button class="btn btn-s" id="rs-rev">Review Answers</button><button class="btn btn-p" id="rs-home">Home</button></div>
       </div>
     </div>
 
     <!-- NOTES -->
     <div class="scr" id="s-notes">
       <div class="empty">
-        <div class="empty-icon">📝</div>
+        <div class="empty-icon"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity:0.5"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
         <div class="empty-title">Notes Coming Soon</div>
         <div class="empty-desc">Unit-by-unit study notes for AP Micro &amp; Macro will appear here.</div>
       </div>
     </div>
-
   </div>
 
   <script src="data/micro-mcq.json.js"></script>
   <script src="data/macro-mcq.json.js"></script>
   <script src="data/micro-frq.json.js"></script>
   <script src="data/macro-frq.json.js"></script>
+  <script src="data/micro-papers.json.js"></script>
+  <script src="data/macro-papers.json.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
